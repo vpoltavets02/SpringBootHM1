@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All items</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/styles/stylesheet.css}" href="/styles/stylesheet.css"/>
+</head>
+<body>
+<h1>The list of items: </h1>
+<div th:if="${ not#lists.isEmpty(items)}">
+    <table>
+        <tr>
+            <th>Item id</th>
+            <th>Item name</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.getId()}"></td>
+            <td th:text="${item.getName()}"></td>
+            <td th:text="${item.getPrice()}"></td>
+        </tr>
+    </table>
+</div>
+<br/>
+<a href="../">Go back to home page</a>
+</body>
+</html>

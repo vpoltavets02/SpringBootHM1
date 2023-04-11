@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All requests</title>
+
+</head>
+<body>
+<h1>The list of requests: </h1>
+<div th:each="request : ${requests}">
+    <a th:href="@{/requests/{id}(id=${request.getId()})}"
+       th:text="${'Request# ' + request.getId()}"></a>
+</div>
+<br/>
+<a href="/requests/new">Create new request</a><br/>
+<a href="../">Go back to home page</a>
+</body>
+</html>

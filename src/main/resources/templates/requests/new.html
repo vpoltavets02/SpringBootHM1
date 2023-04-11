@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New request</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/requests}">
+    <label for="clients">Choose client for creating request</label><br/>
+    <select id="clients" name="clientId">
+        <option th:each="client : ${clients}" th:value="${client.getId()}"
+                th:text="${client.getId() + ' ' + client.getName()}">
+        </option>
+    </select><br/>
+<!--    <select th:field="*{clientId}">-->
+<!--        <option th:each="client : ${clients}" th:value="${client.getId()}"-->
+<!--                th:text="${client.getId() + ' ' + client.getName()}">Client-->
+<!--        </option>-->
+<!--    </select><br/>-->
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Item id</th>
+            <th>Item name</th>
+            <th>Item price</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td>
+                <input type="checkbox" th:name="checkedItems" th:value="${item.getId()}">
+            </td>
+            <td th:text="${item.getId()}"></td>
+            <td th:text="${item.getName()}"></td>
+            <td th:text="${item.getPrice()}"></td>
+        </tr>
+    </table>
+
+<!--    <input th:each="item : ${items}" th:name="idChecked"-->
+    <!--           th:value="${item.getId()}" th:text="${item.getName()}"-->
+    <!--           type="checkbox" id="item"><br/>-->
+        <input type="submit" value="Create request">
+</form>
+</body>
+</html>

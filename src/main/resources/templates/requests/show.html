@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Requested items</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/styles/stylesheet.css}" href="/styles/stylesheet.css"/>
+</head>
+<body>
+<p th:text="${'Request id: ' + request.getId()}"></p>
+<p th:text="${'Request owner: ' + request.getOwner().getName()}"></p>
+<p>Requested items: </p>
+<table>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.getName()}">Name</td>
+    </tr>
+</table>
+<br/>
+<a href="../requests">Go back</a>
+</body>
+</html>
